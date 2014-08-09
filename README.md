@@ -1,4 +1,4 @@
-# Stringer.js
+# Stringer.js [![Build Status](https://travis-ci.org/ondrs/stringer.js.svg?branch=master)](https://travis-ci.org/ondrs/stringer.js)
 
 Swiss knife for easy and immutable manipulation with strings in javascript.
 
