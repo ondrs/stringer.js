@@ -19,12 +19,12 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/ondrs/node-krawler/blob/master/LICENSE.md"
+      "url": "https://github.com/ondrs/stringer.js/blob/master/LICENSE.md"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ondrs/node-krawler.git"
+    "url": "https://github.com/ondrs/stringer.js"
   },
   "devDependencies": {
     "chai": "~1.9.0"
