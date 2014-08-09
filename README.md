@@ -1,4 +1,4 @@
-# Stringer
+# Stringer.js
 
 Swiss knife for easy and immutable manipulation with strings in javascript.
 
