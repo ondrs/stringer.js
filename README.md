@@ -1,0 +1,50 @@
+# Stringer
+
+Swiss knife for easy and immutable manipulation with strings in javascript.
+
+## How to install
+```
+npm install stringer.js
+bower install stringer.js
+```
+
+## How to use
+
+Construct a new Stringer object
+
+    var str = s('Hello! I am Stringer and I cost exactly $0! ♥');
+
+And use as follows
+
+    str.justNumber().toInt();
+    // 0
+
+    str.only(18).justLetters().toUpper().only(14).toString();
+    // HELLOIAMSTRING
+
+    str.webalize().toString()
+    // hello-i-am-stringer-and-i-cost-exactly-0
+
+## Available methods
+
+- justLetterAndNumbers
+- justLetters
+- justNumbers
+- justDecimals
+- removeDiacritics
+- webalize
+- rtrim
+- ltrim
+- lpad
+- rpad
+- escapeRegExp
+- toUpper
+- toLower
+- only
+- thousands
+- toFloat
+- toInt
+- toString
+- toBool
+- isNumber
+- contains

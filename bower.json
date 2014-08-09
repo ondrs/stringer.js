@@ -1,0 +1,12 @@
+{
+  "name": "stringer.js",
+  "version": "0.1",
+  "main": "lib/stringer.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "package.js",
+    "package.json"
+  ]
+}

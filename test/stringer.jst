@@ -1,0 +1,158 @@
+var s = require(__dirname + '/../lib/stringer');
+var expect = require('chai').expect;
+
+describe('Stringer tests', function() {
+
+
+  it('should allow just letters and numbers', function() {
+    var txt = s('!!!řčš465as.,@◘%6♥2').justLetterAndNumbers().toString();
+    expect(txt).to.equal('465as62');
+  });
+
+
+  it('should allow just letters', function() {
+    var txt = s('!!!řčš465as.,@◘%6♥2').justLetters().toString();
+    expect(txt).to.equal('as');
+  });
+
+
+  it('should allow just numbers', function() {
+    var txt = s('!!!řčš465as.,@◘%6♥2').justNumbers().toString();
+    expect(txt).to.equal('46562');
+  });
+
+
+  it('should allow just decimals', function() {
+    var txt = s('4562,25').justDecimals().toString();
+    expect(txt).to.equal('4562.25');
+  });
+
+
+  it('should remove diacritics', function() {
+    var txt = s('+ěščřžýáíé=').removeDiacritics().toString();
+    expect(txt).to.equal('+escrzyaie=');
+  });
+
+
+  it('should webalize', function() {
+    var txt = s('Helena a Mařena!').webalize().toString();
+    expect(txt).to.equal('helena-a-marena');
+  });
+
+
+  it('should rtrim', function() {
+    var txt = s('pepaaaaa').rtrim('a').toString();
+    expect(txt).to.equal('pep');
+
+    var txt = s('pepaa!!').rtrim('a!!').toString();
+    expect(txt).to.equal('pep');
+
+    var txt = s('pepa--').rtrim('-').toString();
+    expect(txt).to.equal('pepa');
+  });
+
+
+  it('should ltrim', function() {
+    var txt = s('pepaaaaa').ltrim('pep').toString();
+    expect(txt).to.equal('aaaaa');
+  });
+
+
+  it('should escape safely escape for regesxp', function() {
+    var txt = s('\[a]?!%-\//ahoj*$').escapeRegExp().toString();
+    expect(txt).to.equal('\\[a\\]\\?!%\\-\\/\\/ahoj\\*\\$');
+  });
+
+
+  it('should make upper', function() {
+    var txt = s('ahoj!').toUpper().toString();
+    expect(txt).to.equal('AHOJ!');
+  });
+
+
+  it('should make lower', function() {
+    var txt = s('AHOJ!').toLower().toString();
+    expect(txt).to.equal('ahoj!');
+  });
+
+
+  it('should allow only N characters', function() {
+    var txt = s('aaaaaaaaaaaaaa').only(5).toString();
+    expect(txt).to.equal('aaaaa');
+
+    var txt = s('aaaaaaaaaaaaaa').only().toString();
+    expect(txt).to.equal('a');
+  });
+
+
+  it('should separate thousands', function() {
+    var txt = s('150,250').thousands().toString();
+    expect(txt).to.equal('150 250');
+
+    var txt = s(1000000.00).thousands().toString();
+    expect(txt).to.equal('1 000 000');
+  });
+
+
+  it('should convert to float', function() {
+    var txt = s('7821.11').toFloat();
+    expect(txt).to.equal(7821.11);
+  });
+
+
+  it('should convert to int', function() {
+    var txt = s('7821,11').toInt();
+    expect(txt).to.equal(7821);
+  });
+
+
+  it('should convert to string', function() {
+    var txt = s(7821.11).toString();
+    expect(txt).to.equal('7821.11');
+  });
+
+
+  it('should convert to bool', function() {
+    expect(s(7821.11).toBool()).to.be.true;
+    expect(s('0').toBool()).to.be.false;
+    expect(s('false').toBool()).to.be.false;
+  });
+
+
+  it('should pad from left', function() {
+    expect(s('123').lpad(5).toString()).to.equal('00123');
+    expect(s('123').lpad(5, 'X').toString()).to.equal('XX123');
+  });
+
+
+  it('should pad from right', function() {
+    expect(s('123').rpad(5).toString()).to.equal('12300');
+    expect(s('123').rpad(5, 'X').toString()).to.equal('123XX');
+  });
+
+
+  it('should check if it is a number', function() {
+    expect(s('ahoj pepo 7821,11').isNumber()).to.false;
+    expect(s('7821,11').isNumber()).to.true;
+  });
+
+
+  it('should check if string contains another characters', function() {
+    var text = s('nazdar pepo jak se mas');
+    expect(text.contains('pep')).to.true;
+    expect(text.contains('!')).to.false;
+  });
+
+
+  it('should test examples', function() {
+    var str = s('Hello! I am Stringer and I cost exactly $0! ♥');
+
+    expect(str.justNumbers().toInt()).to.equal(0);
+    expect(str.only(18).justLetters().toUpper().only(14).toString()).to.equal('HELLOIAMSTRING');
+    expect(str.webalize().toString()).to.equal('hello-i-am-stringer-and-i-cost-exactly-0');
+    expect(str.contains('♥')).to.be.true;
+  });
+
+
+});
+

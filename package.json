@@ -1,0 +1,42 @@
+{
+  "name": "stringer.js",
+  "version": "0.1.0",
+  "description": "Swiss knife for easy and immutable manipulation with strings in javascript.",
+  "keywords": [
+    "stringers",
+    "strings",
+    "string",
+    "manipulation",
+    "immutable"
+  ],
+  "maintainers": [
+    {
+      "name": "Ondřej Plšek",
+      "email": "plsek.o@gmail.com",
+      "url": "http://ondraplsek.cz/"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/ondrs/node-krawler/blob/master/LICENSE.md"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ondrs/node-krawler.git"
+  },
+  "devDependencies": {
+    "chai": "~1.9.0"
+  },
+  "scripts": {
+    "test": "mocha test/stringer.jst"
+  },
+  "engines": [
+    "node >=0.8.x"
+  ],
+  "directories": {
+    "lib": "lib"
+  },
+  "main": "./lib/stringer"
+}
