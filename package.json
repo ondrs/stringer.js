@@ -1,6 +1,6 @@
 {
   "name": "stringer.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Swiss knife for easy and immutable manipulation with strings in javascript.",
   "keywords": [
     "stringers",
