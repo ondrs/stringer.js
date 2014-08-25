@@ -112,6 +112,17 @@ describe('Stringer tests', function() {
   });
 
 
+  it('should convert to truncated', function() {
+    var txt = s('ahoj pepo jak se mas');
+
+    expect(txt.toTruncated(6)).to.equal('ahoj…');
+    expect(txt.toTruncated(15)).to.equal('ahoj pepo jak…');
+    expect(txt.toTruncated(0)).to.equal('…');
+    expect(txt.toTruncated(50)).to.equal('ahoj pepo jak se mas');
+    expect(txt.toTruncated(6, '!')).to.equal('ahoj!');
+  });
+
+
   it('should convert to bool', function() {
     expect(s(7821.11).toBool()).to.be.true;
     expect(s('0').toBool()).to.be.false;
@@ -151,6 +162,7 @@ describe('Stringer tests', function() {
     expect(str.only(18).justLetters().toUpper().only(14).toString()).to.equal('HELLOIAMSTRING');
     expect(str.webalize().toString()).to.equal('hello-i-am-stringer-and-i-cost-exactly-0');
     expect(str.contains('♥')).to.be.true;
+    expect(str.toTruncated(5)).to.equal('Hello…');
   });
 
 

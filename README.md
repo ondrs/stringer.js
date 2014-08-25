@@ -22,8 +22,11 @@ And use as follows
     str.only(18).justLetters().toUpper().only(14).toString();
     // HELLOIAMSTRING
 
-    str.webalize().toString()
+    str.webalize().toString();
     // hello-i-am-stringer-and-i-cost-exactly-0
+
+    str.toTruncated(5);
+    // Hello…
 
 ## Available methods
 
@@ -42,9 +45,10 @@ And use as follows
 - toLower
 - only
 - thousands
+- isNumber
+- contains
 - toFloat
 - toInt
 - toString
 - toBool
-- isNumber
-- contains
+- toTruncated
