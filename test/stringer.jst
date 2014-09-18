@@ -4,6 +4,12 @@ var expect = require('chai').expect;
 describe('Stringer tests', function() {
 
 
+  it('should allow just written regexp', function() {
+    var txt = s('!!!řčš465as/45.,@◘%6♥2').just('[^0-9/]').toString();
+    expect(txt).to.equal('465/4562');
+  });
+
+
   it('should allow just letters and numbers', function() {
     var txt = s('!!!řčš465as.,@◘%6♥2').justLetterAndNumbers().toString();
     expect(txt).to.equal('465as62');

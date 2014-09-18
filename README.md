@@ -30,6 +30,7 @@ And use as follows
 
 ## Available methods
 
+- just
 - justLetterAndNumbers
 - justLetters
 - justNumbers
